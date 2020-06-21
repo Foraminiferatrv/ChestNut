@@ -1,0 +1,31 @@
+.menu {
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 20px;
+}
+
+nav {
+  height: 100%;
+}
+
+nav ul {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  height: 100%;
+}
+
+.menu:link,
+.menu:visited {
+  color: #F9FCF6;
+}
+
+.menu:hover {
+  color: #f3e140;
+  text-decoration: none;
+}

@@ -1,0 +1,19 @@
+.ProfileContainer{
+  background-color: #F9EBC4;
+  height: 60px;
+  border-radius: 5px;
+  align-items: center;
+  width: 200px;
+  display: flex;
+}
+
+.Stat {
+  font-size: 7pt;
+  font-weight: bold;
+}
+
+.ProfilePic {
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+}
