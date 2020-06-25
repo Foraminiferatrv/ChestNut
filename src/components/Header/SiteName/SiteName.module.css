@@ -1,0 +1,13 @@
+.SiteName a {
+  font-size: 17pt;
+  color: #fff;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.SiteName a:link,
+.SiteName a:hover,
+.SiteName a:active {
+  color: #fff;
+  text-decoration: none;
+}

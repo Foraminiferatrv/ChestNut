@@ -1,0 +1,36 @@
+.LootBox {
+  width: 200px;
+  height: 190px;
+  align-items: center;
+  margin: 10px;
+  
+}
+
+.LootBox:hover {
+  cursor: pointer;
+}
+
+.LootBoxContainer {
+  background-color: rgb(206, 206, 206);
+  height: 100%;
+  transition-duration: 0.3s;
+}
+
+.LootBoxContainer:hover {
+  background-color: rgb(241, 238, 238);
+}
+
+.CaseImg {
+  width: 140px;
+  height: 140px;
+}
+
+.CaseName {
+  font-size: 9pt;
+  display: block;
+  font-weight: bold;
+}
+
+.CaseInfo {
+  font-size: 8pt;
+}
