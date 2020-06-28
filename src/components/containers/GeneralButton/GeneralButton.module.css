@@ -1,0 +1,35 @@
+.GeneralButton,
+.GeneralButton:focus {
+  border-style: none;
+  outline: none !important;
+  border-radius: 2px;
+  height: 50px;
+  width: 200px;
+  background-color: #A7CF5D;
+  transition-duration: 0.2s;
+  font-weight: bold;
+}
+
+.GeneralButton:hover {
+  background-color: #c3eb7b;
+}
+
+.GeneralButton:active {
+  background-color: #fdcd8e;
+}
+
+.yellow {
+  background-color: rgb(241, 229, 57) !important;
+}
+
+.yellow:hover {
+  background-color: rgb(255, 249, 159) !important;
+}
+
+.red {
+  background-color: rgb(238, 69, 27) !important;
+}
+
+.red:hover {
+  background-color: rgb(245, 174, 157) !important;
+}

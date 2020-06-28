@@ -1,14 +1,17 @@
 import React from 'react';
 
+
 import RollWindow from '../../RollWindow/RollWindow';
 import classes from './MainContainer.module.css';
-import ChooseWindow from '../../RollWindow/ChooseWindow/ChooseWindow';
+import ChooseWindow from '../../ChooseWindow/ChooseWindow';
+import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
 
 function MainContainer() {
   return (
     <div className={ classes['MainContainer'] }>
-      <ChooseWindow />
-
+      {/* <ChooseWindow /> */}
+      {/* <LootBoxItemWindow/> */}
+      <RollWindow/>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.ItemContainer{
+  min-height: 160px;
+  min-width: 150px;
+  background-color: rgba(194, 194, 194, 0.966);
+  margin: 10px 0;
+}
+
+.ItemContainer img{
+  max-width: 130px;
+  max-height: 125px;
+}

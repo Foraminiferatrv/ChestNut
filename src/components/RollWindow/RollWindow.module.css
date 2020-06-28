@@ -1,9 +1,6 @@
 .RollWindow {
-  border: 1px solid #0f0;
-  height: 800px;
-  width: 1200px;
-  margin: 0 auto;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  flex-direction: column;
 }

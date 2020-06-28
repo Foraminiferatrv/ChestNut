@@ -1,5 +1,6 @@
 .MainContainer {
-  height: 1200px;
-  width: 100%;
+  width: 1080px;
+  height: 750px;
   margin:0 auto;
+  margin-top: 20px;
 }
