@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
 import RollWindow from '../../RollWindow/RollWindow';
@@ -7,11 +7,13 @@ import ChooseWindow from '../../ChooseWindow/ChooseWindow';
 import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
 
 function MainContainer() {
+  
+
   return (
     <div className={ classes['MainContainer'] }>
-      {/* <ChooseWindow /> */}
+      <ChooseWindow onClick={()=>{}} />
       {/* <LootBoxItemWindow/> */}
-      <RollWindow/>
+      {/* <RollWindow/> */}
     </div>
   );
 }

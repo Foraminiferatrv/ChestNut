@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './LootBoxItemsWindow.module.css';
 
 import LootBoxItem from '../../LootBoxItem/LootBoxItem';
-import GeneralButton from '../GeneralButton/GeneralButton';
+import GeneralButton from '../../UI/GeneralButton/GeneralButton';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

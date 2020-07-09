@@ -1,25 +1,24 @@
 import React from 'react';
 
-import case4 from '../../assets/img/case1/case4.png';
 import classes from './LootBox.module.css';
 
 import Container from 'react-bootstrap/Container/'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-function LootBox() {
+const LootBox = ( props ) => {
   return (
-    <div className={ classes['LootBox'] }>
-      <Container className={ classes['LootBoxContainer']}>
+    <div className={ classes.LootBox }>
+      <Container className={ classes.LootBoxContainer }>
         <Row>
           <Col>
-            <img className={ classes['CaseImg'] } src={ case4 } alt="Huntsman Case" />
-            <span className={ classes['CaseName'] }>Huntsman Case</span>
+            <img className={ classes.CaseImg } src={ props.lootBoxImg } alt={ props.LootBoxName } />
+            <span className={ classes['CaseName'] }>{ props.lootBoxName }</span>
           </Col>
         </Row>
         <Row>
           <Col><span className={ classes['CaseInfo'] }>Value Range:</span></Col>
-          <Col><span className={ classes['CaseInfo'] }>0.20$ - 70$</span></Col>
+          <Col><span className={ classes['CaseInfo'] }>{ props.valueRange }</span></Col>
         </Row>
       </Container>
     </div>
