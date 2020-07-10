@@ -34,7 +34,7 @@ const LootBoxGrid = ( props ) => {
 
     const rowCreator = ( splitedLootboxes ) => {
       return splitedLootboxes.map( fiveLootBoxes => {
-        return <Row className="d-flex justify-content-center">
+        return <Row className="" xl="5">
           { fiveLootBoxes }
         </Row>
       } );
