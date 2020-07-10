@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import LootBox from '../LootBox/LootBox';
+import LootBoxGrid from '../containers/LootBoxGrid/LootBoxGrid';
+
 
 const ChooseWindow = () => {
   const [lootBoxes, setLootBoxes] = useState( [] );
@@ -24,47 +26,49 @@ const ChooseWindow = () => {
           } );
         }
         setLootBoxes( loadedLootBoxes );
-        console.log( loadedLootBoxes );
-        console.log( lootBoxes );
-      }
-      ).then( console.log( lootBoxes ) );
+      } ).catch( error => console.log( 'Something went wrong' + error ) )
   }, [] );
 
-  let readyLootBox = lootBoxes.map( lootBoxData => {
-    return <Col className="d-flex justify-content-center">
-      <LootBox
-        lootBoxImg={ lootBoxData.img }
-        lootBoxName={ lootBoxData.name }
-      />
-    </Col>
-  } );
+  ////////////////////////////////////////////////////////////////////////
 
+
+  const lootBoxGreedCreator = ( lootBoxesArray ) => {
+    const lootBoxArraySplitter = ( lootBoxArray ) => {
+      let unsortedArray = lootBoxArray;
+      let sortedArray = [];
+
+      for ( let i = 0; i < unsortedArray.length; i++ ) {
+        sortedArray = [...sortedArray, unsortedLootBoxes.splice( 0, 5 )];
+      }
+      return sortedArray;
+    }
+
+
+    const unsortedLootBoxes = lootBoxesArray.map( lootBoxData => {
+      return <Col className="d-flex justify-content-center" xl="2,4">
+        <LootBox
+          lootBoxImg={ lootBoxData.img }
+          lootBoxName={ lootBoxData.name }
+        />
+      </Col>
+    } );
+
+    const splitedLootboxes = lootBoxArraySplitter( unsortedLootBoxes );
+
+    const lootBoxRow = splitedLootboxes.map( fiveLootBoxes => {
+      return <Row>
+        { fiveLootBoxes }
+      </Row>
+    } );
+
+    return lootBoxRow;
+  };
+
+  const readyLootBoxes = lootBoxGreedCreator( lootBoxes );
+  ////////////////////////////////////////////////////////////////////////
   return (
     <Container className={ classes['ChooseWindow'] }>
-      <Row >
-        { readyLootBox }
-      </Row>
-      {/* <Row>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"><LootBox /></Col>
-        <Col className="d-flex justify-content-center"></Col>
-      </Row>
-      <Row >
-        <Col className="d-flex justify-content-center"><LootBox /></Col>
-        <Col className="d-flex justify-content-center"><LootBox /></Col>
-        <Col className="d-flex justify-content-center"><LootBox /></Col>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"><LootBox /></Col>
-      </Row>
-      <Row>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"></Col>
-        <Col className="d-flex justify-content-center"><LootBox /></Col>
-        <Col className="d-flex justify-content-center"></Col>
-      </Row> */}
+      <LootBoxGrid lootBoxesArray={lootBoxes}/>
     </Container>
   );
 };

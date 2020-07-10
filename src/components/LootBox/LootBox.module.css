@@ -1,7 +1,7 @@
 .LootBox {
   display: flex;
-  min-width: 200px;
-  min-height: 200px;
+  min-width: 160px;
+  min-height: 160px;
   align-items: center;
   margin: 10px 5px;
 }
@@ -21,8 +21,13 @@
 }
 
 .CaseImg {
-  width: 140px;
-  height: 140px;
+  width: 170px;
+  height: 170px;
+  top: -10%;
+  left: -13%;
+  position: absolute;
+  /* object-fit: cover; */
+  clip: rect(20px);
 }
 
 .CaseName {
@@ -33,4 +38,11 @@
 
 .CaseInfo {
   font-size: 8pt;
+}
+
+.crop {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  overflow: hidden;
 }
