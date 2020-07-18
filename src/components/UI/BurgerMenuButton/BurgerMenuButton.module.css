@@ -1,0 +1,45 @@
+.Container {
+  cursor: pointer;
+  position: relative;
+  width: 33px;
+  height: 26px;
+  z-index: 201;
+}
+
+.Bun1,
+.Bun2,
+.Bun3 {
+  width: 32px;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  transition-duration: 0.5s;
+}
+
+
+.Bun2 {
+  top: 10px;
+}
+
+.Bun3 {
+  top: 21px;
+}
+
+.Open .Bun1 {
+  transform: translateY(10px) rotate(45deg);
+
+}
+
+.Open .Bun2 {
+  opacity: 0;
+}
+
+.Open .Bun3 {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+@media(min-width:768px) {
+  .Container {
+    display: none;
+  }
+}

@@ -1,20 +1,17 @@
 .LootBox {
-  display: flex;
   min-width: 160px;
-  min-height: 160px;
+  height: 160px;
+  display: flex;
   align-items: center;
-  margin: 10px 5px;
+  flex-direction: column;
+  background-color: rgb(206, 206, 206);
+  transition-duration: 0.3s;
 }
 
 .LootBox:hover {
   cursor: pointer;
 }
 
-.LootBoxContainer {
-  background-color: rgb(206, 206, 206);
-  height: 100%;
-  transition-duration: 0.3s;
-}
 
 .LootBoxContainer:hover {
   background-color: rgb(241, 238, 238);
@@ -26,7 +23,6 @@
   top: -10%;
   left: -13%;
   position: absolute;
-  /* object-fit: cover; */
   clip: rect(20px);
 }
 

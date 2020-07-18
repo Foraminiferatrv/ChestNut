@@ -1,9 +1,5 @@
-.Logo{
-    width: 50px;
-    height:50px;
-}
 
-.LogoImg{
+.LogoImg {
   background-image: url(../../../assets/img//chestnut_logo.png);
   background-size: cover;
   background-repeat: no-repeat;

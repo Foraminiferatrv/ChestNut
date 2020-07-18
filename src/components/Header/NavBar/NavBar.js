@@ -2,15 +2,12 @@ import React from 'react';
 
 import classes from './NavBar.module.css';
 
+import NavItems from '../NavItems/NavItems';
+
 function NavBar() {
   return (
-    <nav >
-      <ul className="row">
-        <li className="col-md"><a href="#" className={classes.menu}>menu</a></li>
-        <li className="col-md"><a href="#" className={classes.menu}>menu</a></li>
-        <li className="col-md"><a href="#" className={classes.menu}>menu</a></li>
-        <li className="col-md"><a href="#" className={classes.menu}>menu</a></li>
-      </ul>
+    <nav className={classes.NavBar}>
+      <NavItems/>
     </nav >
   );
 }

@@ -5,4 +5,9 @@
    margin-top: 20px;
    background-color: #fff;
    overflow-y: auto;
+
+   display: grid;
+   grid-auto-rows: 160px;
+   grid-gap: 10px;
+   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
  }

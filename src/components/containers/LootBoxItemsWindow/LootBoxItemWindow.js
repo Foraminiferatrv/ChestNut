@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import classes from './LootBoxItemsWindow.module.css';
@@ -9,49 +10,29 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import picture from '../../../assets/img/case1/HuntsmanCase/10.png'
-function LootBoxItemsWindow() {
-  return (
-    <div className={ classes['LootBoxItemsWindow'] }>
-      <div>
-        <Container>
-          <Row >
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-          </Row>
-          <Row>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-          </Row>
-          <Row>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-            <Col className="d-flex justify-content-center"><LootBoxItem name='Tec-9|Isaac' adress={ picture } /></Col>
-          </Row>
-        </Container>
-      </div>
-      <div className={ classes['ButtonBlock'] }>
-        <Container >
-          <Row className='d-flex align-items-center'>
 
-            <Col><GeneralButton color='yellow' name='Buy The Case'/></Col>
-            <Col><GeneralButton name='Open The Case'/></Col>
-      
-          </Row>
-        </Container>
+const LootBoxItemsWindow = ( { itemsArray } ) => {
+
+  const readyItems = itemsArray.map( itemData => {
+    return (
+      <LootBoxItem
+        name={ itemData.name }
+        adress={ itemData.img }
+      /> );
+  } );
+
+  return (
+
+    <Container className={ classes.LootBoxItemsWindow }>
+      <div className={ classes.ItemsContainer }>
+        { readyItems }
       </div>
-    </div>
+      <div className={ classes.ButtonBlock }>
+        <GeneralButton color='yellow' name='Buy The Case' />
+        <GeneralButton name='Open The Case' />
+      </div>
+    </Container>
+
   );
 }
 

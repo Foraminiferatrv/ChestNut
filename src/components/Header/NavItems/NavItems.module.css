@@ -1,0 +1,21 @@
+ .menu {
+   text-decoration: none;
+   font-weight: bold;
+   text-transform: uppercase;
+ }
+
+
+ .ItemsList li {
+   display: inline-block;
+   height: 100%;
+ }
+
+ .menu:link,
+ .menu:visited {
+   color: #F9FCF6;
+ }
+
+ .menu:hover {
+   color: #f3e140;
+   text-decoration: none;
+ }

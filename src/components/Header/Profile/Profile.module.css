@@ -1,20 +1,45 @@
-.ProfileContainer{
+.ProfileContainer {
   background-color: #F9EBC4;
-  height: 60px;
+  font-size: 11pt;
   border-radius: 5px;
-  align-items: center;
-  width: 200px;
-  display: flex;
-  padding: 15px;
-}
-
-.Stat {
-  font-size: 7pt;
-  font-weight: bold;
+   padding: 10px;
 }
 
 .ProfilePic {
+  
   background-color: #fff;
   width: 40px;
   height: 40px;
+}
+
+.Stat {
+  display: none;
+}
+
+
+@media(min-width:768px) {
+  .ProfileContainer {
+    padding: 5px 10px;
+    align-items: center;
+    grid-gap: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .Stat {
+    display: block;
+  }
+
+  .ProfilePic {
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    justify-self: center;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+  }
 }

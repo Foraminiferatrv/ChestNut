@@ -1,30 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import classes from './Header.module.css';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import NavBar from './NavBar/NavBar';
 import Logo from './Logo/Logo';
 import Profile from './Profile/Profile';
 import SiteName from './SiteName/SiteName';
+import SideDrawer from '../UI/SideDrawer/SideDrawer';
+import BurgerMenuButton from '../UI/BurgerMenuButton/BurgerMenuButton';
+
 
 function Header() {
+  const [headerUiState, setHeaderUiState] = useState( {
+    someOtherState: 'asdadw',
+    isSidedrawerOpened: false
+  } );
+
+  const sidedrawerToggle = ( ) => {
+    setHeaderUiState( prevState => ( {
+      ...prevState,
+      isSidedrawerOpened: !headerUiState.isSidedrawerOpened
+    } ) );
+    console.log( "THE STATE", headerUiState );
+  }
+
   return (
     <header className={ classes.Header }>
-      <Container>
-        <Row className="align-items-center justify-content-between">
-          <Col xs="2">
-            <Row className="align-items-center">
-              <Col> <Logo /> </Col>
-              <Col> <SiteName /> </Col>
-            </Row>
-          </Col>
-          <Col xs="4"> <NavBar /></Col>
-          <Col xs="2"><Profile /></Col>
-        </Row>
-      </Container>
+      <SideDrawer isSidedrawerOpened={headerUiState.isSidedrawerOpened}/>
+      <BurgerMenuButton isSidedrawerOpened={ headerUiState.isSidedrawerOpened } sidedrawerToggle={ sidedrawerToggle } />
+      <div className={ classes.Brand }>
+
+        <div className={classes.Logo}>
+          <Logo />
+        </div>
+        <SiteName />
+      </div>
+      <NavBar />
+      <Profile />
     </header>
   );
 }
