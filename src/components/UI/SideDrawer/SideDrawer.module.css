@@ -7,17 +7,23 @@
   top: 0;
   background-color: #A7CF5D;
   z-index: 200;
+  transition: transform 0.2s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
 }
 
+@media(min-width:768px) {
+  .SideDrawer{
+    display: none;
+  }
+}
+
 .Logo {
   width: 100px;
   height: 100px;
 }
-
 
 .SideDrawer ul {
   margin-top: 80px;
@@ -33,38 +39,10 @@
 }
 
 .Close {
-  /* display: none; */
-  animation-name: close;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-   animation-timing-function:ease-in;
+  transform: translateX(-100%);
 }
 
 .Open {
-  animation-name: open;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function:ease-out;
+  transform: translateX(0);
 }
 
-@keyframes close {
-  from {
-    left: 0;
-  }
-
-  to {
-    left: -100%;
-    display: none;
-
-  }
-}
-
-@keyframes open {
-  from {
-    left: -100%;
-  }
-
-  to {
-    left: 0;
-  }
-}

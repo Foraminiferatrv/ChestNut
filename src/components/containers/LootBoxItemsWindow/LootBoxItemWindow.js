@@ -5,10 +5,8 @@ import classes from './LootBoxItemsWindow.module.css';
 
 import LootBoxItem from '../../LootBoxItem/LootBoxItem';
 import GeneralButton from '../../UI/GeneralButton/GeneralButton';
+import BackButton from '../../UI/BackButton/BackButton';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 
 const LootBoxItemsWindow = ( { itemsArray } ) => {
@@ -23,15 +21,18 @@ const LootBoxItemsWindow = ( { itemsArray } ) => {
 
   return (
 
-    <Container className={ classes.LootBoxItemsWindow }>
-      <div className={ classes.ItemsContainer }>
-        { readyItems }
+    <div className={ classes.LootBoxItemsWindow }>
+      <BackButton />
+      <div className={ classes.IttemsBlock }>
+        <div className={ classes.ItemsContainer }>
+          { readyItems }
+        </div>
+        <div className={ classes.ButtonBlock }>
+          <GeneralButton color='yellow' name='Buy The Case' />
+          <GeneralButton name='Open The Case' />
+        </div>
       </div>
-      <div className={ classes.ButtonBlock }>
-        <GeneralButton color='yellow' name='Buy The Case' />
-        <GeneralButton name='Open The Case' />
-      </div>
-    </Container>
+    </div>
 
   );
 }

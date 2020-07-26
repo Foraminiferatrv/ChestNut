@@ -1,23 +1,66 @@
 .LootBoxItemsWindow {
   width: 100%;
   height: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 30px;
   background-color: #fff;
+  display: flex;
+}
+
+.IttemsBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .ItemsContainer {
   width: 100%;
-  height: 75%;
   display: grid;
   grid-gap: 10px;
-  grid-template-rows:minmax(160px, 1fr);
-  grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+  grid-template-rows: minmax(160px, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   overflow-y: auto;
 }
 
 .ButtonBlock {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   height: 25%;
+  padding: 20px;
+}
+
+.ButtonBlock>button {
+  margin: 5px 0;
+}
+
+@media (min-width: 576px) {
+  .LootBoxItemsWindow {
+    max-width: 540px;
+  }
+
+  .ButtonBlock {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .LootBoxItemsWindow {
+    max-width: 720px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .LootBoxItemsWindow {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .LootBoxItemsWindow {
+    max-width: 1180px;
+  }
 }

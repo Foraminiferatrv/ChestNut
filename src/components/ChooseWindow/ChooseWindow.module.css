@@ -1,13 +1,37 @@
- .ChooseWindow {
-   height: 100%;
-   width: 100%;
-   padding: 30px;
-   margin-top: 20px;
-   background-color: #fff;
-   overflow-y: auto;
+.ChooseWindow {
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+  background-color: #fff;
+  overflow-y: auto;
 
-   display: grid;
-   grid-auto-rows: 160px;
-   grid-gap: 10px;
-   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
- }
+  display: grid;
+  grid-auto-rows: 160px;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+@media (min-width: 576px) {
+  .ChooseWindow {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ChooseWindow {
+    max-width: 720px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .ChooseWindow {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ChooseWindow {
+    max-width: 1180px;
+  }
+}

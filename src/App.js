@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import './App.css';
 
@@ -8,13 +9,15 @@ import MainContent from './components/containers/MainContent/MainContent';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <MainContent>
-        <MainContainer />
-      </MainContent>
-      {/* <Footer/> */ }
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <MainContent>
+          <MainContainer />
+        </MainContent>
+        {/* <Footer/> */ }
+      </div>
+    </BrowserRouter>
   );
 }
 

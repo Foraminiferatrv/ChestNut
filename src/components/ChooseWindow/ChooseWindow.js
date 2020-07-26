@@ -2,10 +2,8 @@ import React from 'react';
 
 import classes from './ChooseWindow.module.css';
 
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import LootBox from '../LootBox/LootBox';
+import BackButton from '../UI/BackButton/BackButton';
 
 
 const ChooseWindow = ( { lootBoxesArray, clicked } ) => {
@@ -20,10 +18,12 @@ const ChooseWindow = ( { lootBoxesArray, clicked } ) => {
 
   } );
   return (
-    <Container className={ classes.ChooseWindow }>
-      { readyLootBoxes }
-
-    </Container>
+    <React.Fragment>
+      <BackButton />
+      <div className={ classes.ChooseWindow }>
+        { readyLootBoxes }
+      </div>
+    </React.Fragment>
   );
 };
 

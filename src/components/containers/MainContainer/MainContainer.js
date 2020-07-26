@@ -1,10 +1,12 @@
 import React, { useReducer, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
+import classes from './MainContainer.module.css';
 
 import RollWindow from '../../RollWindow/RollWindow';
-import classes from './MainContainer.module.css';
 import ChooseWindow from '../../ChooseWindow/ChooseWindow';
 import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
+
 
 const uIReducer = ( currentuIState, action ) => {
   switch ( action.type ) {
@@ -68,6 +70,7 @@ const MainContainer = () => {
 
   }
 
+
   const containerContent = uIState.chooseWindowIsOpened ?
     <ChooseWindow
       lootBoxesArray={ lootBoxesState.lootBoxes }
@@ -79,7 +82,16 @@ const MainContainer = () => {
 
   return (
     <div className={ classes.MainContainer }>
-      { containerContent }
+      <Route path="/"
+        exact
+        component={ () =>
+          <ChooseWindow
+            lootBoxesArray={ lootBoxesState.lootBoxes }
+            clicked={ lootBoxClickHandler }
+          /> }
+      />
+
+      {/* { containerContent } */ }
     </div>
   );
 }

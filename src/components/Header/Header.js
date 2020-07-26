@@ -8,6 +8,7 @@ import Profile from './Profile/Profile';
 import SiteName from './SiteName/SiteName';
 import SideDrawer from '../UI/SideDrawer/SideDrawer';
 import BurgerMenuButton from '../UI/BurgerMenuButton/BurgerMenuButton';
+import Backdrop from '../UI/Backdrop/Backdrop';
 
 
 function Header() {
@@ -16,7 +17,7 @@ function Header() {
     isSidedrawerOpened: false
   } );
 
-  const sidedrawerToggle = ( ) => {
+  const sidedrawerToggle = () => {
     setHeaderUiState( prevState => ( {
       ...prevState,
       isSidedrawerOpened: !headerUiState.isSidedrawerOpened
@@ -26,11 +27,12 @@ function Header() {
 
   return (
     <header className={ classes.Header }>
-      <SideDrawer isSidedrawerOpened={headerUiState.isSidedrawerOpened}/>
+      <SideDrawer isSidedrawerOpened={ headerUiState.isSidedrawerOpened } />
+      <Backdrop isSidedrawerOpened={ headerUiState.isSidedrawerOpened } sidedrawerToggle={ sidedrawerToggle } />
       <BurgerMenuButton isSidedrawerOpened={ headerUiState.isSidedrawerOpened } sidedrawerToggle={ sidedrawerToggle } />
       <div className={ classes.Brand }>
 
-        <div className={classes.Logo}>
+        <div className={ classes.Logo }>
           <Logo />
         </div>
         <SiteName />

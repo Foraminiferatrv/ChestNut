@@ -1,7 +1,25 @@
-.Arrow{
-  	width: 0;
-  	height: 0;
-  	border-top: 25px solid transparent;
-  	border-right: 50px solid #555;
-  	border-bottom: 25px solid transparent;
+.BackButton {
+  height: 100%;
+  max-width: 70px;
+  background-color: #fcfce6;
+  padding: 20px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.Arrow {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-right: 25px solid #555;
+  border-bottom: 12px solid transparent;
+}
+
+.BackButton:hover {
+  background-color: #c7e78b;
+}
+
+.BackButton:active {
+  background-color: #ffffff;
+
 }
