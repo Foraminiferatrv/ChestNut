@@ -9,7 +9,7 @@ import MainContent from './components/containers/MainContent/MainContent';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <div className="App">
         <Header />
         <MainContent>

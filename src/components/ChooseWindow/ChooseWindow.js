@@ -1,29 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './ChooseWindow.module.css';
 
 import LootBox from '../LootBox/LootBox';
-import BackButton from '../UI/BackButton/BackButton';
 
+const ChooseWindow = ( props ) => {
 
-const ChooseWindow = ( { lootBoxesArray, clicked } ) => {
-
-  const readyLootBoxes = lootBoxesArray.map( lootBoxData => {
-    return ( <LootBox
-      lootBoxImg={ lootBoxData.img }
-      lootBoxName={ lootBoxData.name }
-      items={ lootBoxData.items }
-      clicked={ clicked }
-    /> );
+  const readyLootBoxes = props.lootBoxesArray.map( lootBoxData => {
+    return (
+      <Link
+        key={ lootBoxData.id }
+        to={
+          {
+            pathname: '/csgo/chests/' + lootBoxData.id
+          }
+        }>
+        <LootBox
+          lootBoxImg={ lootBoxData.img }
+          lootBoxName={ lootBoxData.name }
+          lootBoxID={ lootBoxData.id }
+          clicked={ props.clicked }
+        />
+      </Link> );
 
   } );
+
   return (
-    <React.Fragment>
-      <BackButton />
-      <div className={ classes.ChooseWindow }>
-        { readyLootBoxes }
-      </div>
-    </React.Fragment>
+    <div className={ classes.ChooseWindow }>
+      { readyLootBoxes }
+    </div>
   );
 };
 

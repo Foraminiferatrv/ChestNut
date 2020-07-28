@@ -2,14 +2,14 @@ import React from 'react';
 
 import classes from './LootBox.module.css';
 
-import Container from 'react-bootstrap/Container/'
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-
 const LootBox = ( props ) => {
   return (
-
-    <div onClick={ props.clicked.bind( this, props.items ) } className={ classes.LootBox }>
+    
+    <div
+      // onClick={ props.clicked.bind( this, props.items ) }
+      onClick={ props.clicked.bind( this, props.lootBoxID ) }
+      className={ classes.LootBox }
+    >
       <div className={ classes.crop }>
         <img className={ classes.CaseImg } src={ props.lootBoxImg } alt={ props.LootBoxName } />
       </div>

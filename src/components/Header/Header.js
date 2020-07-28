@@ -13,7 +13,6 @@ import Backdrop from '../UI/Backdrop/Backdrop';
 
 function Header() {
   const [headerUiState, setHeaderUiState] = useState( {
-    someOtherState: 'asdadw',
     isSidedrawerOpened: false
   } );
 
@@ -22,7 +21,6 @@ function Header() {
       ...prevState,
       isSidedrawerOpened: !headerUiState.isSidedrawerOpened
     } ) );
-    console.log( "THE STATE", headerUiState );
   }
 
   return (

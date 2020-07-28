@@ -1,26 +1,26 @@
 import React, { useReducer, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
+import axiosInstanse from '../../../axios';
 
 import classes from './MainContainer.module.css';
 
-import RollWindow from '../../RollWindow/RollWindow';
+// import RollWindow from '../../RollWindow/RollWindow';
 import ChooseWindow from '../../ChooseWindow/ChooseWindow';
 import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
 
 
-const uIReducer = ( currentuIState, action ) => {
-  switch ( action.type ) {
-    case 'CHOOSE_WINDOW_OPEN':
-      return { chooseWindowIsOpened: true, lootBoxItemWindowIsOpened: false, rollWindowIsOpened: false };
-    case 'LOOTBOX_ITEM_WINDOW_OPEN':
-      return { chooseWindowIsOpened: false, lootBoxItemWindowIsOpened: true, rollWindowIsOpened: false };
-    case 'ROLL_WINDOW_OPEN':
-      return { chooseWindowIsOpened: false, lootBoxItemWindowIsOpened: false, rollWindowIsOpened: true };
-    default:
-      new Error( "Shoudn't get there!" );
-  }
-
-}
+// const uIReducer = ( currentuIState, action ) => {
+//   switch ( action.type ) {
+//     case 'CHOOSE_WINDOW_OPEN':
+//       return { chooseWindowIsOpened: true, lootBoxItemWindowIsOpened: false, rollWindowIsOpened: false };
+//     case 'LOOTBOX_ITEM_WINDOW_OPEN':
+//       return { chooseWindowIsOpened: false, lootBoxItemWindowIsOpened: true, rollWindowIsOpened: false };
+//     case 'ROLL_WINDOW_OPEN':
+//       return { chooseWindowIsOpened: false, lootBoxItemWindowIsOpened: false, rollWindowIsOpened: true };
+//     default:
+//       new Error( "Shoudn't get there!" );
+//   }
+// }
 
 const lootBoxReducer = ( currentLootBoxesState, action ) => {
   switch ( action.type ) {
@@ -28,70 +28,69 @@ const lootBoxReducer = ( currentLootBoxesState, action ) => {
       return { lootBoxes: action.payload };
     case 'LOAD_ITEMS':
       return { currentItems: Object.values( action.payload ) };
+    case 'LOAD_CASE_ID':
+      return { currentCaseID: action.payload }
+
     default:
-      new Error( "Shoudn't get there!" );
+      throw new Error( `Not supported action ${action.type}` );
   }
 }
 const MainContainer = () => {
 
-  const [uIState, dispatchUi] = useReducer( uIReducer, {
-    chooseWindowIsOpened: true,
-    lootBoxItemWindowIsOpened: false,
-    rollWindowIsOpened: false,
-  } );
+  // const [uIState, dispatchUi] = useReducer( uIReducer, {
+  //   chooseWindowIsOpened: true,
+  //   lootBoxItemWindowIsOpened: false,
+  //   rollWindowIsOpened: false,
+  // } );
 
   const [lootBoxesState, dispatchLootBoxes] = useReducer( lootBoxReducer, {
     lootBoxes: [],
-    currentItems: []
+    currentCaseID: null
   } );
 
 
   useEffect( () => {
-    fetch( 'https://chestnut-8ecfb.firebaseio.com/csgo/chests.json',
-      {
-        method: 'GET'
-      } ).then( response => response.json() )
-      .then( responseData => {
+    axiosInstanse.get( '/csgo/chests.json' )
+      .then( response => {
         const loadedLootBoxes = [];
-        for ( const key in responseData ) {
+        for ( const key in response.data ) {
           loadedLootBoxes.push( {
-            name: responseData[key].name,
-            img: responseData[key].img,
-            items: responseData[key].items
+            name: response.data[key].name,
+            img: response.data[key].img,
+            id: key
           } );
         }
         dispatchLootBoxes( { type: 'LOAD_LOOTBOXES', payload: loadedLootBoxes } );
       } ).catch( error => console.log( 'Something went wrong' + error ) )
-  }, [] );
+  }, [lootBoxesState.lootBoxes] );
+
 
   const lootBoxClickHandler = ( items ) => {
-    dispatchLootBoxes( { type: 'LOAD_ITEMS', payload: items } );
-    dispatchUi( { type: 'LOOTBOX_ITEM_WINDOW_OPEN' } );
+    dispatchLootBoxes( { type: 'LOAD_CASE_ID', payload: items } )
 
   }
 
 
-  const containerContent = uIState.chooseWindowIsOpened ?
-    <ChooseWindow
-      lootBoxesArray={ lootBoxesState.lootBoxes }
-      clicked={ lootBoxClickHandler }
-    />
-    : uIState.lootBoxItemWindowIsOpened ? <LootBoxItemWindow itemsArray={ lootBoxesState.currentItems } />
-      : uIState.rollWindowIsOpened ? <RollWindow />
-        : null;
-
   return (
     <div className={ classes.MainContainer }>
-      <Route path="/"
+      <Redirect exact from="/" to="/csgo/chests" />
+
+      <Route
         exact
+        path="/csgo/chests"
         component={ () =>
           <ChooseWindow
             lootBoxesArray={ lootBoxesState.lootBoxes }
             clicked={ lootBoxClickHandler }
           /> }
       />
+      <Route />
 
-      {/* { containerContent } */ }
+      <Route
+        exact
+        path="/csgo/chests/:caseID"
+        component={ LootBoxItemWindow }
+      />
     </div>
   );
 }
