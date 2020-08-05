@@ -1,3 +1,7 @@
+a:hover{
+  text-decoration: none;
+}
+
 .Header {
   height: 80px;
   background-color: #A7CF5D;

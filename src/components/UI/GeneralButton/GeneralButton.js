@@ -6,7 +6,7 @@ const GeneralButton = ( props ) => {
   const buttonClasses = `${classes.GeneralButton} ${classes[props.color]}`;
 
   return (
-    <button className={ buttonClasses } >{ props.name }</button>
+    <button onClick={props.clicked} className={ buttonClasses } >{ props.name }</button>
   );
 }
 

@@ -1,18 +1,19 @@
 .ItemContainer {
   min-height: 160px;
   min-width: 160px;
-  background-color: rgb(224, 184, 204);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ItemContainer img {
-  max-width: 110px;
-  max-height: 110px;
+  max-width: 68%;
+  max-height: 68%;
   min-width: 110px;
   min-height: 110px;
 }
 
 .ItemNameContainer {
-  background-color: rgb(238, 41, 140);
   height: 50px;
   display: flex;
   align-items: center;
@@ -25,4 +26,83 @@
   font-size: 10pt;
   font-weight: bold;
 
+}
+
+.ConsumerGrade {
+  background-color: rgb(221, 221, 221);
+}
+
+.ConsumerGrade .ItemNameContainer {
+  background-color: rgb(182, 182, 182);
+}
+
+
+.IndustrialGrade {
+  background-color: rgb(233, 243, 255);
+}
+
+.IndustrialGrade .ItemNameContainer {
+  background-color: rgb(196, 219, 248);
+}
+
+
+.MilSpec {
+  background-color: rgb(191, 219, 255);
+}
+
+.MilSpec .ItemNameContainer {
+  background-color: rgb(70, 139, 230);
+}
+
+
+.Restricted {
+  background-color: rgb(217, 184, 221);
+}
+
+.Restricted .ItemNameContainer {
+  background-color: rgb(168, 97, 182);
+}
+
+
+.Classified {
+  background-color: rgb(224, 184, 204);
+}
+
+.Classified .ItemNameContainer {
+  background-color: rgb(238, 41, 140);
+}
+
+
+.Covert {
+  background-color: rgb(255, 187, 187);
+}
+
+.Covert .ItemNameContainer {
+  background-color: rgb(248, 80, 80);
+}
+
+
+.ExceedinglyRare {
+  background-color: rgb(255, 236, 175);
+}
+
+.ExceedinglyRare .ItemNameContainer {
+  background-color: rgb(247, 231, 90);
+}
+
+
+.Covert {
+  background-color: rgb(255, 187, 187);
+}
+
+.Covert .ItemNameContainer {
+  background-color: rgb(248, 80, 80);
+}
+
+
+@media (min-width: 576px) {
+  .ItemContainer {
+    max-width: 200px;
+    max-height: 200px;
+  }
 }

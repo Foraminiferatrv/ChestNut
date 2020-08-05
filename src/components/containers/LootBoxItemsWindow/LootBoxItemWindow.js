@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstanse from '../../../axios';
+import { Link, withRouter } from 'react-router-dom';
 
 import classes from './LootBoxItemsWindow.module.css';
 
@@ -23,7 +24,9 @@ const LootBoxItemsWindow = ( props ) => {
         for ( const key in response.data.items ) {
           itemArray.push( {
             id: key,
+            dropChance: response.data.items[key].dropChance,
             itemData: {
+              quality: response.data.items[key].quality,
               img: response.data.items[key].img,
               name: response.data.items[key].name
             }
@@ -42,6 +45,7 @@ const LootBoxItemsWindow = ( props ) => {
         key={ item.id }
         name={ item.itemData.name }
         adress={ item.itemData.img }
+        quality={ item.itemData.quality }
       /> );
   } )
 
@@ -55,7 +59,13 @@ const LootBoxItemsWindow = ( props ) => {
         </div>
         <div className={ classes.ButtonBlock } >
           <GeneralButton color='yellow' name='Buy The Case' />
-          <GeneralButton name='Open The Case' />
+          <Link to={
+            { pathname: '/csgo/chests/' + props.match.params.caseID + '/opening' }
+          }
+            onClick={ props.clicked.bind( this, lootBoxItemsState.lootBoxItems ) }
+          >
+            <GeneralButton name='Open The Case' />
+          </Link>
         </div>
       </div>
     </div>
@@ -63,4 +73,4 @@ const LootBoxItemsWindow = ( props ) => {
   );
 }
 
-export default LootBoxItemsWindow;
+export default withRouter( LootBoxItemsWindow );

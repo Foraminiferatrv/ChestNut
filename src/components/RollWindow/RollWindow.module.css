@@ -2,5 +2,18 @@
   height: 100%;
   width: 100%;
   background-color: #fff;
+  display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
+
+.RollLine {
+  border: 1px solid #00f;
+  height: 200px;
+  max-width: 962px;
+  min-width: 400px;
+  overflow: hidden;
+  display: flex;
+}
+

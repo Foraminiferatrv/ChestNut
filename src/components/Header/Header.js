@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Header.module.css';
 
@@ -28,13 +29,14 @@ function Header() {
       <SideDrawer isSidedrawerOpened={ headerUiState.isSidedrawerOpened } />
       <Backdrop isSidedrawerOpened={ headerUiState.isSidedrawerOpened } sidedrawerToggle={ sidedrawerToggle } />
       <BurgerMenuButton isSidedrawerOpened={ headerUiState.isSidedrawerOpened } sidedrawerToggle={ sidedrawerToggle } />
-      <div className={ classes.Brand }>
 
-        <div className={ classes.Logo }>
-          <Logo />
+        <div className={ classes.Brand }>
+          <div className={ classes.Logo }>
+            <Logo />
+          </div>
+          <SiteName />
         </div>
-        <SiteName />
-      </div>
+     
       <NavBar />
       <Profile />
     </header>

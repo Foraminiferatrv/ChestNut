@@ -1,21 +1,24 @@
- .menu {
+ .ItemsList li {
+   display: inline-block;
+   height: 100%;
+ }
+ .Menu {
    text-decoration: none;
    font-weight: bold;
    text-transform: uppercase;
  }
 
-
- .ItemsList li {
-   display: inline-block;
-   height: 100%;
+.ActiveLink {
+   color: #d8ff91 !important;
  }
 
- .menu:link,
- .menu:visited {
+ .Menu:link,
+ .Menu:visited {
    color: #F9FCF6;
  }
 
- .menu:hover {
+ .Menu:hover {
    color: #f3e140;
+
    text-decoration: none;
  }

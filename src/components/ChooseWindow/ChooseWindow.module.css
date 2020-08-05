@@ -11,6 +11,17 @@
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
+.ChooseWindow a {
+  color: #000;
+  font-size: 9pt;
+  font-weight: bold;
+}
+
+.ChooseWindow a:hover {
+  color: rgb(131, 131, 131);
+  text-decoration: none;
+}
+
 @media (min-width: 576px) {
   .ChooseWindow {
     max-width: 540px;
