@@ -1,0 +1,15 @@
+.RollLine {
+  border: 1px solid #00f;
+  height: 200px;
+  width: 900px;
+  overflow: hidden;
+  position: relative;
+}
+
+.InnerRibbon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  left: -7700px;
+}

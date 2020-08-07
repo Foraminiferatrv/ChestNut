@@ -1,10 +1,10 @@
-import React, { useReducer, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import axiosInstanse from '../../../axios';
 
 import classes from './MainContainer.module.css';
 
-import RollWindow from '../../RollWindow/RollWindow';
+import RollWindow from '../../containers/RollWindow/RollWindow';
 import ChooseWindow from '../../ChooseWindow/ChooseWindow';
 import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
 
@@ -60,24 +60,25 @@ const MainContainer = () => {
           /> }
       />
       <Route />
-
-      <Route
-        exact
-        path="/csgo/chests/:caseID"
-        component={ () =>
-          <LootBoxItemWindow
-            clicked={ openCaseClickHandler }
-          /> }
-      />
-      <Route
-        exact
-        path={ `/csgo/chests/:caseID/opening` }
-        component={ () =>
-          <RollWindow
-            items={ itemsState.currentItems }
-          />
-        }
-      />
+      <Switch>
+        <Route
+          exact
+          path="/csgo/chests/:caseID"
+          component={ () =>
+            <LootBoxItemWindow
+              clicked={ openCaseClickHandler }
+            /> }
+        />
+        <Route
+          exact
+          path={ `/csgo/chests/:caseID/opening` }
+          component={ () =>
+            <RollWindow
+              items={ itemsState.currentItems }
+            />
+          }
+        />
+      </Switch>
     </div>
   );
 }

@@ -44,7 +44,7 @@ const LootBoxItemsWindow = ( props ) => {
       <LootBoxItem
         key={ item.id }
         name={ item.itemData.name }
-        adress={ item.itemData.img }
+        img={ item.itemData.img }
         quality={ item.itemData.quality }
       /> );
   } )
