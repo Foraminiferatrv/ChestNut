@@ -27,6 +27,7 @@ function createRolledItemData( allItems, quality ) {
 }
 
 function getRolledItem( itemsDataList ) {
+
   return createRolledItemData( itemsDataList, getRandomQuality() );
 }
 

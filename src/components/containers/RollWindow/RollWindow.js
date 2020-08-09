@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import axiosInstanse from '../../../axios';
 
 import classes from './RollWindow.module.css';
 
-import RollRibon from '../../RollRibbon/RollRibbon';
+import RollRibbon from '../../RollRibbon/RollRibbon';
 import GeneralButton from '../../UI/GeneralButton/GeneralButton';
+import LootBoxItem from '../../LootBoxItem/LootBoxItem';
+import { getRolledItem } from './randomizer';
 
 
 const RollWindow = ( { items } ) => {
+
+  const [rollWindowUiState, setRollWindowUiState] = useState( {
+    isInnerRibbonAnimated: false
+  } );
+
   const [randomItemState, setRandomItemState] = useState( {
     fetchedRandomItem: {
       id: '0e9e3a8a7f504151a16f3885c39093e0',
@@ -20,14 +25,33 @@ const RollWindow = ( { items } ) => {
     }
   } );
 
-  // const chosenItem = randomItemState.fetchedRandomItem != null ? createRandomItem( [randomItemState.fetchedRandomItem] ) : null;
+  useEffect( () => {
+    // -----------------------------------TEMPORARY-----------------------------
+    setRandomItemState( { ...randomItemState, fetchedRandomItem: getRolledItem( items ) } );
+    // -----------------------------------TEMPORARY-----------------------------
+  }, [] );
+
+  const startOpeningAnimation = () => {
+    console.log( 'Animation started!' )
+    setRollWindowUiState( { ...rollWindowUiState, isInnerRibbonAnimated: true } )
+  }
+
+  const openingAnimationEnd = () => {
+    console.log( 'Animation ended!' )
+    // setRollWindowUiState( { ...rollWindowUiState, isInnerRibbonAnimated: false } )
+  }
 
 
   return (
     <div className={ classes.RollWindow }>
-      <RollRibon chosenItem={ randomItemState.fetchedRandomItem } randomItemsData={ items } />
+      <RollRibbon
+        chosenItem={ randomItemState.fetchedRandomItem }
+        randomItemsData={ items }
+        animationEnd={ openingAnimationEnd }
+        animate={ rollWindowUiState.isInnerRibbonAnimated }
+      />
       <div className={ classes.ButtonBlock }>
-        <GeneralButton name="Open!" clicked={ () => { } } />
+        <GeneralButton name="Open!" clicked={ startOpeningAnimation } />
       </div>
     </div>
   );
