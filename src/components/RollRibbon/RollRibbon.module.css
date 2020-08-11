@@ -27,16 +27,3 @@
   top: -20px;
   z-index: 5;
 }
-
-.OpeningAnimation {
-  animation-fill-mode: forwards;
-  animation-name: case-opening;
-  animation-duration: 8s;
-  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
-}
-
-@keyframes case-opening {
-  to {
-    transform: translateX(-895%);
-  }
-}

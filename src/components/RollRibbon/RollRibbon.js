@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import LootBoxItem from '../LootBoxItem/LootBoxItem';
 
 import classes from './RollRibbon.module.css';
@@ -13,8 +14,17 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     ribbonEnd: null
   } );
 
-  const innerRibbonClasses = [classes.InnerRibbon, animate ? classes.OpeningAnimation : null];
- 
+  // const ribbonAnimation = {
+  //   stop: { x: 0 },
+  //   roll: {
+  //     x: Math.floor( Math.random() * ( ( -8338 ) - ( -8186 ) ) ) + (-8186),
+  //     transition: {
+  //       duration: 6.5
+  //     }
+  //   }   // 8186 - 8338
+  // }
+
+  const ribbonAnimation = useAnimation();
 
   const createRandomItem = ( itemData ) => {
     return itemData.map( ( { id, itemData }, index ) => <LootBoxItem
@@ -36,6 +46,19 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
   }
 
   useEffect( () => {
+    if ( animate ) {
+      ribbonAnimation.start(
+        {
+          x: Math.floor( Math.random() * ( ( -8338 ) - ( -8186 ) ) ) + ( -8186 ),
+          transition: {
+            duration: 6.5
+          }
+        }
+      ).then( animationEnd );
+    }
+  }, [animate] );
+
+  useEffect( () => {
     setRollRibbonState( {
       ...rollRibbonState,
       ribbonBegining: createRollRibbon( randomItemsData, 50 ),
@@ -43,19 +66,19 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     } );
   }, [] );
 
-  
+
   return (
     <div className={ classes.RollLine }>
-        <div className={classes.Cursor}></div>
-      <div className={classes.ForCursorContainer}>
-        <div className={ innerRibbonClasses.join( ' ' ) } onAnimationEnd={ animationEnd }>
+      <div className={ classes.Cursor }></div>
+      <div className={ classes.ForCursorContainer }>
+        <motion.div animate={ ribbonAnimation } variants={ ribbonAnimation } className={ classes.InnerRibbon } >
           { rollRibbonState.ribbonBegining }
           <LootBoxItem
             withSeparator='WithSeparator'
             id={ chosenItem.id }
             { ...chosenItem.itemData } />
           { rollRibbonState.ribbonEnd }
-        </div>
+        </motion.div>
       </div>
     </div>
   )
