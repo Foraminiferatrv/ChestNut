@@ -14,16 +14,6 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     ribbonEnd: null
   } );
 
-  // const ribbonAnimation = {
-  //   stop: { x: 0 },
-  //   roll: {
-  //     x: Math.floor( Math.random() * ( ( -8338 ) - ( -8186 ) ) ) + (-8186),
-  //     transition: {
-  //       duration: 6.5
-  //     }
-  //   }   // 8186 - 8338
-  // }
-
   const ribbonAnimation = useAnimation();
 
   const createRandomItem = ( itemData ) => {
@@ -49,7 +39,7 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     if ( animate ) {
       ribbonAnimation.start(
         {
-          x: Math.floor( Math.random() * ( ( -8338 ) - ( -8186 ) ) ) + ( -8186 ),
+          x: Math.floor( Math.random() * ( ( -8173 ) - ( -8020 ) ) ) + ( -8020 ),
           transition: {
             duration: 6.5
           }

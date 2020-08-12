@@ -6,6 +6,7 @@ import RollRibbon from '../../RollRibbon/RollRibbon';
 import GeneralButton from '../../UI/GeneralButton/GeneralButton';
 import LootBoxItem from '../../LootBoxItem/LootBoxItem';
 import { getRolledItem } from './randomizer';
+import WonItemWindow from '../../WonItemWindow/WonItemWindow';
 
 
 const RollWindow = ( { items } ) => {
@@ -15,14 +16,7 @@ const RollWindow = ( { items } ) => {
   } );
 
   const [randomItemState, setRandomItemState] = useState( {
-    fetchedRandomItem: {
-      id: '0e9e3a8a7f504151a16f3885c39093e0',
-      itemData: {
-        quality: "ExceedinglyRare",
-        img: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v73diRQ7cizq4yCkP_gDLfQhGxUppwhjLCWptqsiQPt_UppMm6lcNXHdAU9MFGD8wC3lOvp05S17Z3MnXd9-n51fgb0S08/360fx360f",
-        name: "CzzzzzzzzzzzzzzzzzzzzZ75-Auto | Twist"
-      }
-    }
+    fetchedRandomItem: {}
   } );
 
   useEffect( () => {
@@ -44,6 +38,7 @@ const RollWindow = ( { items } ) => {
 
   return (
     <div className={ classes.RollWindow }>
+      <WonItemWindow  wonItem={randomItemState.fetchedRandomItem}/>
       <RollRibbon
         chosenItem={ randomItemState.fetchedRandomItem }
         randomItemsData={ items }
@@ -59,3 +54,17 @@ const RollWindow = ( { items } ) => {
 
 
 export default RollWindow;
+
+
+
+
+
+
+// {
+//   id: '0e9e3a8a7f504151a16f3885c39093e0',
+//     itemData: {
+//     quality: "ExceedinglyRare",
+//       img: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v73diRQ7cizq4yCkP_gDLfQhGxUppwhjLCWptqsiQPt_UppMm6lcNXHdAU9MFGD8wC3lOvp05S17Z3MnXd9-n51fgb0S08/360fx360f",
+//         name: "CzzzzzzzzzzzzzzzzzzzzZ75-Auto | Twist"
+//   }
+// }

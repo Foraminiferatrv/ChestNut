@@ -5,7 +5,9 @@
 }
 
 .App {
-  text-align: center;
-  background-color: #F9EBC4;
+  background-color: #F9EBC4; 
+  
+  display: flex;
+  flex-direction: column;
 }
 
