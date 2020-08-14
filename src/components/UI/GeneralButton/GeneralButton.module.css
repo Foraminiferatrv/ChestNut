@@ -1,5 +1,6 @@
 .GeneralButton,
 .GeneralButton:focus {
+  cursor: pointer;
   border-style: none;
   outline: none !important;
   border-radius: 2px;

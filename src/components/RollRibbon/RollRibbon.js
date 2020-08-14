@@ -41,10 +41,11 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
         {
           x: Math.floor( Math.random() * ( ( -8173 ) - ( -8020 ) ) ) + ( -8020 ),
           transition: {
-            duration: 6.5
+            duration: 6.5,
+            ease:'easeOut'
           }
         }
-      ).then( animationEnd );
+      );
     }
   }, [animate] );
 
@@ -61,7 +62,12 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     <div className={ classes.RollLine }>
       <div className={ classes.Cursor }></div>
       <div className={ classes.ForCursorContainer }>
-        <motion.div animate={ ribbonAnimation } variants={ ribbonAnimation } className={ classes.InnerRibbon } >
+        <motion.div
+          animate={ ribbonAnimation }
+          variants={ ribbonAnimation }
+          className={ classes.InnerRibbon }
+          onAnimationComplete={ animationEnd }
+        >
           { rollRibbonState.ribbonBegining }
           <LootBoxItem
             withSeparator='WithSeparator'

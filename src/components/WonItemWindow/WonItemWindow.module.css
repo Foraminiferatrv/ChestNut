@@ -1,4 +1,21 @@
 .WonItemWindow {
-  width: 100%;
-  /* height: 100%; */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.LootBoxChosenItem {
+  z-index: 101;
+}
+
+.WonItemButton{
+  margin-top: 30px;
+  z-index: 101;
 }

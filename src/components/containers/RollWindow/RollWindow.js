@@ -12,12 +12,21 @@ import WonItemWindow from '../../WonItemWindow/WonItemWindow';
 const RollWindow = ( { items } ) => {
 
   const [rollWindowUiState, setRollWindowUiState] = useState( {
-    isInnerRibbonAnimated: false
+    wonItemWindow: null,
+    isInnerRibbonAnimated: true
   } );
 
   const [randomItemState, setRandomItemState] = useState( {
-    fetchedRandomItem: {}
+    fetchedRandomItem: {
+      id: null,
+      itemData: {
+        name: null,
+        img: null,
+        quality: null
+      }
+    }
   } );
+
 
   useEffect( () => {
     // -----------------------------------TEMPORARY-----------------------------
@@ -25,33 +34,28 @@ const RollWindow = ( { items } ) => {
     // -----------------------------------TEMPORARY-----------------------------
   }, [] );
 
-  const startOpeningAnimation = () => {
-    console.log( 'Animation started!' )
-    setRollWindowUiState( { ...rollWindowUiState, isInnerRibbonAnimated: true } )
-  }
-
   const openingAnimationEnd = () => {
     console.log( 'Animation ended!' )
-    // setRollWindowUiState( { ...rollWindowUiState, isInnerRibbonAnimated: false } )
+    setRollWindowUiState( {
+      ...rollWindowUiState,
+      isInnerRibbonAnimated: false,
+      wonItemWindow: <WonItemWindow wonItemData={ randomItemState.fetchedRandomItem } />
+    } );
   }
 
 
   return (
     <div className={ classes.RollWindow }>
-      <WonItemWindow  wonItem={randomItemState.fetchedRandomItem}/>
+      { rollWindowUiState.wonItemWindow }
       <RollRibbon
         chosenItem={ randomItemState.fetchedRandomItem }
         randomItemsData={ items }
         animationEnd={ openingAnimationEnd }
         animate={ rollWindowUiState.isInnerRibbonAnimated }
       />
-      <div className={ classes.ButtonBlock }>
-        <GeneralButton name="Open!" clicked={ startOpeningAnimation } />
-      </div>
     </div>
   );
 }
-
 
 export default RollWindow;
 

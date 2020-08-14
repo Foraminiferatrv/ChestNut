@@ -27,7 +27,7 @@ function Header() {
   return (
     <header className={ classes.Header }>
       <SideDrawer isSidedrawerOpened={ headerUiState.isSidedrawerOpened } />
-      <Backdrop showBackdrop={ headerUiState.isSidedrawerOpened } clicked={ sidedrawerToggle } />
+      <Backdrop show={ headerUiState.isSidedrawerOpened } clicked={ sidedrawerToggle } />
       <BurgerMenuButton isSidedrawerOpened={ headerUiState.isSidedrawerOpened } sidedrawerToggle={ sidedrawerToggle } />
 
         <div className={ classes.Brand }>

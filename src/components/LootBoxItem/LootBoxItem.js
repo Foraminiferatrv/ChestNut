@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './LootBoxItem.module.css';
 
 const LootBoxItem = ( props ) => {
-  let lootboxClasses = [classes.ItemContainer, classes[props.quality], classes[props.withSeparator]];
+  let lootboxClasses = [classes.ItemContainer,props.externalClasses ,classes[props.quality], classes[props.withSeparator]];
   return (
     <div className={ lootboxClasses.join(' ') }>
       <div className={classes.ImageContainer}>

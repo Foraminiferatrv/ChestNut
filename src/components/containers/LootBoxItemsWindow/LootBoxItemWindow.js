@@ -52,7 +52,7 @@ const LootBoxItemsWindow = ( props ) => {
   return (
 
     <div className={ classes.LootBoxItemsWindow }>
-      <BackButton />
+      <BackButton externalClasses={classes.BackButton}  />
       <div className={ classes.IttemsBlock }>
         <div className={ classes.ItemsContainer }>
           { readyItems }

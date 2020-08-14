@@ -6,7 +6,8 @@
 
 .App {
   background-color: #F9EBC4; 
-  
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }

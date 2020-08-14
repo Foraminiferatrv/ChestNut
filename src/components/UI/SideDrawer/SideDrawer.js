@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import classes from './SideDrawer.module.css';
 
@@ -11,14 +12,19 @@ const SideDrawer = props => {
 
 
   return (
-    <div className={ sideDrawerClasses.join( ' ' ) }>
-      <div className={ classes.Logo }>
-        <Logo />
-      </div>
-      <nav className={ classes.NavList }>
-        <NavItems />
-      </nav>
-    </div>
+    <motion.div
+      animate={ props.isSidedrawerOpened ? { x: 0 } : { x: '-100%' } }
+      initial={ { x: '-100%' } }
+      transition={ { type: 'inertia' }, { duration: 0.13 } }
+
+className = { classes.SideDrawer } >
+  <div className={ classes.Logo }>
+    <Logo />
+  </div>
+  <nav className={ classes.NavList }>
+    <NavItems />
+  </nav>
+    </motion.div >
   );
 }
 

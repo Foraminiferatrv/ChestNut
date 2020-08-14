@@ -1,6 +1,5 @@
 .LootBoxItemsWindow {
   width: 100%;
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
@@ -12,6 +11,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify-content: end;
 }
 
 .ItemsContainer {
@@ -20,7 +20,6 @@
   grid-gap: 10px;
   grid-template-rows: minmax(160px, 1fr);
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  overflow-y: auto;
 }
 
 .ButtonBlock {
@@ -34,6 +33,10 @@
 
 .ButtonBlock>button {
   margin: 5px 0;
+}
+
+.BackButton {
+  margin-right: 10px;
 }
 
 @media (min-width: 576px) {

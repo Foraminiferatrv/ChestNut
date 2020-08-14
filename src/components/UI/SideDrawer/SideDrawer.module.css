@@ -1,23 +1,18 @@
 .SideDrawer {
   padding-top: 100px;
   width: 60vw;
-  height: 100%;
-  position: absolute;
+  height: 100vh;
+  position: fixed;
   left: 0;
   top: 0;
   background-color: #A7CF5D;
   z-index: 200;
-  transition: transform 0.2s ease-out;
-  display: flex;
+  /* transition: transform 0.2s ease-out; */
+   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-}
-
-@media(min-width:768px) {
-  .SideDrawer{
-    display: none;
-  }
+  
 }
 
 .Logo {
@@ -30,19 +25,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-size: 25pt;
+  font-size: 19pt;
   padding: 0;
 }
 
 .SideDrawer ul li {
   padding: 20px;
 }
-
-.Close {
-  transform: translateX(-100%);
-}
-
-.Open {
-  transform: translateX(0);
-}
-

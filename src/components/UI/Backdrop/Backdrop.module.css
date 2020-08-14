@@ -1,21 +1,15 @@
 .Backdrop{
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.342);
-  z-index: 199;
+  background-color: rgba(0, 0, 0, 0.642);
+  z-index: 100;
   cursor: pointer;
 }
 
 
 .Hide{
   display: none;
-}
-
-@media(min-width:768px) {
-  .Backdrop {
-    display: none;
-  }
 }
