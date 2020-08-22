@@ -13,11 +13,16 @@ import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
 const MainContainer = () => {
   const [lootBoxesState, setLootBoxes] = useState( {
     lootBoxes: [],
-    currentCaseID: null
+
   } );
 
   const [itemsState, setItems] = useState( {
-    currentItems: null
+    currentItems: null,
+    currentCaseID: null
+  } );
+
+  const [lootBoxItemsWindowRouteState, setLootBoxItemsWindowRouteState] = useState( {
+    loadingStatus: true
   } );
 
   useEffect( () => {
@@ -34,17 +39,44 @@ const MainContainer = () => {
         return loadedLootBoxes;
       } )
       .then( ( loadedLootBoxes ) => setLootBoxes( { ...lootBoxesState, lootBoxes: loadedLootBoxes } ) )
-      .catch( error => console.log( 'Something went wrong' + error ) )
+      .catch( error => console.log( 'Get Lootboxes: Something went wrong!!!!!!! ' + error ) );
   }, [] );
+
+  useEffect( () => {
+    if ( itemsState.currentCaseID ) {
+      axiosInstanse.get( `/csgo/chests/${itemsState.currentCaseID}.json` ).then( response => {
+        if ( response.data !== null && response.data !== undefined ) {
+          let currentItemsArray = [];
+          for ( const key in response.data.items ) {
+            currentItemsArray.push( {
+              name: response.data.items[key].name,
+              img: response.data.items[key].img,
+              quality: response.data.items[key].quality,
+              id: key
+            }
+            )
+          }
+          return currentItemsArray;
+        }
+      } ).then( ( currentItemsArray ) => setItems( { ...itemsState, currentItems: currentItemsArray } ) )
+        .then( () => {
+          setLootBoxItemsWindowRouteState( { ...lootBoxItemsWindowRouteState, loadingStatus: false } )
+        } )
+        .catch( error => console.log( 'Get Items: Something went wrong!!!!!!! ' + error ) );
+    }
+  }, [itemsState.currentCaseID] );
+
 
 
   const lootBoxClickHandler = id => {
-    setLootBoxes( { ...lootBoxesState, currentCaseID: id } )
+    setItems( { ...itemsState, currentCaseID: id } );
   }
 
   const openCaseClickHandler = items => {
-    setItems( { ...itemsState, currentItems: items } )
+    setItems( { ...itemsState, currentItems: items } );
   }
+
+  console.log( lootBoxItemsWindowRouteState.loadingStatus );
 
   return (
     <div className={ classes.MainContainer }>
@@ -60,15 +92,20 @@ const MainContainer = () => {
           /> }
       />
       <Route />
+
       <Switch>
         <Route
           exact
           path="/csgo/chests/:caseID"
           component={ () =>
-            <LootBoxItemWindow
-              clicked={ openCaseClickHandler }
-            /> }
+            lootBoxItemsWindowRouteState.loadingStatus ? <div>LOADING</div> :
+              <LootBoxItemWindow
+                clicked={ openCaseClickHandler }
+                allItemsData={ itemsState.currentItems }
+              />
+          }
         />
+
         <Route
           exact
           path={ `/csgo/chests/:caseID/opening` }

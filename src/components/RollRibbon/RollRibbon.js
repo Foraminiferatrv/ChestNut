@@ -17,11 +17,14 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
   const ribbonAnimation = useAnimation();
 
   const createRandomItem = ( itemData ) => {
-    return itemData.map( ( { id, itemData }, index ) => <LootBoxItem
-      withSeparator='WithSeparator'
-      key={ `${id}${index}` }
-      id={ id }
-      { ...itemData } />
+    return itemData.map( ( { id, name, quality, img }, index ) =>
+      <LootBoxItem
+        withSeparator='WithSeparator'
+        key={ `${id}${index}` }
+        id={ id }
+        name={ name }
+        img={ img }
+        quality={ quality } />
     )
   }
 
@@ -42,7 +45,7 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
           x: Math.floor( Math.random() * ( ( -8173 ) - ( -8020 ) ) ) + ( -8020 ),
           transition: {
             duration: 6.5,
-            ease:'easeOut'
+            ease: 'easeOut'
           }
         }
       );
@@ -72,7 +75,7 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
           <LootBoxItem
             withSeparator='WithSeparator'
             id={ chosenItem.id }
-            { ...chosenItem.itemData } />
+            { ...chosenItem } />
           { rollRibbonState.ribbonEnd }
         </motion.div>
       </div>

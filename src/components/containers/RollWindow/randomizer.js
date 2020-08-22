@@ -19,7 +19,7 @@ function getRandomQuality() {
 function createRolledItemData( allItems, quality ) {
   let itemsArray = [];
   for ( const key in allItems ) {
-    if ( allItems[ key ].itemData.quality === quality ) {
+    if ( allItems[ key ].quality === quality ) {
       itemsArray = [ ...itemsArray, allItems[ key ] ];
     }
   }
@@ -27,7 +27,6 @@ function createRolledItemData( allItems, quality ) {
 }
 
 function getRolledItem( itemsDataList ) {
-
   return createRolledItemData( itemsDataList, getRandomQuality() );
 }
 

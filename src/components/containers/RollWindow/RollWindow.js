@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import classes from './RollWindow.module.css';
 
 import RollRibbon from '../../RollRibbon/RollRibbon';
-import GeneralButton from '../../UI/GeneralButton/GeneralButton';
-import LootBoxItem from '../../LootBoxItem/LootBoxItem';
 import { getRolledItem } from './randomizer';
 import WonItemWindow from '../../WonItemWindow/WonItemWindow';
 
@@ -32,7 +30,7 @@ const RollWindow = ( { items } ) => {
     // -----------------------------------TEMPORARY-----------------------------
     setRandomItemState( { ...randomItemState, fetchedRandomItem: getRolledItem( items ) } );
     // -----------------------------------TEMPORARY-----------------------------
-  }, [] );
+  }, [items] );
 
   const openingAnimationEnd = () => {
     console.log( 'Animation ended!' )

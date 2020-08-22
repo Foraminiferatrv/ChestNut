@@ -19,10 +19,10 @@ const WonItemWindow = ( { wonItemData } ) => {
     <motion.div className={ classes.WonItemWindow }>
       <LootBoxItem
         externalClasses={ classes.LootBoxChosenItem }
-        name={ wonItemData.itemData.name }
-        img={ wonItemData.itemData.img }
+        name={ wonItemData.name }
+        img={ wonItemData.img }
         id={ wonItemData.id }
-        quality={ wonItemData.itemData.quality } />
+        quality={ wonItemData.quality } />
       <GeneralButton
         name={ 'Take!' }
         externalClasses={ classes.WonItemButton }
