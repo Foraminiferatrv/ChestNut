@@ -7,6 +7,7 @@ import classes from './MainContainer.module.css';
 import RollWindow from '../../containers/RollWindow/RollWindow';
 import ChooseWindow from '../../ChooseWindow/ChooseWindow';
 import LootBoxItemWindow from '../LootBoxItemsWindow/LootBoxItemWindow';
+import Spinner from '../../UI/Spinner/Spinner';
 
 
 
@@ -43,6 +44,7 @@ const MainContainer = () => {
   }, [] );
 
   useEffect( () => {
+    setLootBoxItemsWindowRouteState( { ...lootBoxItemsWindowRouteState, loadingStatus: true } )
     if ( itemsState.currentCaseID ) {
       axiosInstanse.get( `/csgo/chests/${itemsState.currentCaseID}.json` ).then( response => {
         if ( response.data !== null && response.data !== undefined ) {
@@ -98,7 +100,7 @@ const MainContainer = () => {
           exact
           path="/csgo/chests/:caseID"
           component={ () =>
-            lootBoxItemsWindowRouteState.loadingStatus ? <div>LOADING</div> :
+            lootBoxItemsWindowRouteState.loadingStatus ? <Spinner/> :
               <LootBoxItemWindow
                 clicked={ openCaseClickHandler }
                 allItemsData={ itemsState.currentItems }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import LootBoxItem from '../LootBoxItem/LootBoxItem';
 
@@ -14,29 +14,35 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     ribbonEnd: null
   } );
 
+  let ribbonBegining = null;
+  let ribbonEnd = null;
+
   const ribbonAnimation = useAnimation();
 
-  const createRandomItem = ( itemData ) => {
-    return itemData.map( ( { id, name, quality, img }, index ) =>
-      <LootBoxItem
-        withSeparator='WithSeparator'
-        key={ `${id}${index}` }
-        id={ id }
-        name={ name }
-        img={ img }
-        quality={ quality } />
-    )
+  const createRandomItems = ( itemData ) => {
+    if ( itemData !== null && itemData !== undefined ) {
+      return itemData.map( ( { id, name, quality, img }, index ) =>
+        <LootBoxItem
+          withSeparator='WithSeparator'
+          key={ `${id}${index}` }
+          id={ id }
+          name={ name }
+          img={ img }
+          quality={ quality } />
+      )
+    }
+    return null;
   }
 
-  const createRollRibbon = ( allItemsData, numberOfItems ) => {
+  const createRollRibbonData = ( allItemsData, numberOfItems ) => {
     if ( allItemsData !== null && allItemsData !== undefined ) {
       let itemsDataForContent = [];
       for ( let i = 0; i <= numberOfItems; i++ ) {
         itemsDataForContent = [...itemsDataForContent, getRolledItem( allItemsData )];
       }
-      return createRandomItem( itemsDataForContent );
+      return itemsDataForContent;
     }
-  }
+  };
 
   useEffect( () => {
     if ( animate ) {
@@ -52,13 +58,13 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
     }
   }, [animate] );
 
-  useEffect( () => {
+  useEffect( () => (
     setRollRibbonState( {
       ...rollRibbonState,
-      ribbonBegining: createRollRibbon( randomItemsData, 50 ),
-      ribbonEnd: createRollRibbon( randomItemsData, 3 )
-    } );
-  }, [] );
+      ribbonBegining: createRollRibbonData( randomItemsData, 50 ),
+      ribbonEnd: createRollRibbonData( randomItemsData, 3 )
+    } ) )
+    , [] );
 
 
   return (
@@ -71,12 +77,12 @@ const RollRibbon = ( { randomItemsData, chosenItem, animationEnd, animate } ) =>
           className={ classes.InnerRibbon }
           onAnimationComplete={ animationEnd }
         >
-          { rollRibbonState.ribbonBegining }
+          { createRandomItems( rollRibbonState.ribbonBegining ) }
           <LootBoxItem
             withSeparator='WithSeparator'
             id={ chosenItem.id }
             { ...chosenItem } />
-          { rollRibbonState.ribbonEnd }
+          { createRandomItems( rollRibbonState.ribbonEnd ) }
         </motion.div>
       </div>
     </div>
