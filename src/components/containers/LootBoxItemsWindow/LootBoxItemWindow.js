@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axiosInstanse from '../../../axios';
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import classes from './LootBoxItemsWindow.module.css';
@@ -7,15 +6,16 @@ import classes from './LootBoxItemsWindow.module.css';
 import LootBoxItem from '../../LootBoxItem/LootBoxItem';
 import GeneralButton from '../../UI/GeneralButton/GeneralButton';
 import BackButton from '../../UI/BackButton/BackButton';
+import {sorter} from './sorter';
 
 const LootBoxItemsWindow = ( props ) => {
-console.log(props.allItemsData)
+
   return (
     <div className={ classes.LootBoxItemsWindow }>
       <BackButton externalClasses={ classes.BackButton } />
       <div className={ classes.IttemsBlock }>
         <div className={ classes.ItemsContainer }>
-          { props.allItemsData.map( item => {
+          { props.allItemsData.sort(sorter).map( item => {
             return (
               <LootBoxItem
                 key={ item.id }

@@ -2,9 +2,12 @@ import React from 'react';
 
 import classes from './Spinner.module.css';
 
-const Spinner = () => {
+const Spinner = (props) => {
+  let spinnerClasses = [props.externalClasses,classes.Loader ];
+
+
   return (
-    < div className={classes.Loader} > Loading... </div>
+    < div className={ spinnerClasses.join( ' ' ) } > Loading... </div>
   );
 }
 

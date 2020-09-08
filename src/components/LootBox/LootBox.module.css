@@ -6,13 +6,15 @@
   flex-direction: column;
   background-color: rgb(206, 206, 206);
   transition-duration: 0.3s;
+  box-shadow: 0px 1px 1px 0px #000;
+  text-decoration:none;
 }
 
 .LootBox:hover {
   cursor: pointer;
 }
 
-.LootBoxContainer:hover {
+.LootBox:hover {
   background-color: rgb(241, 238, 238);
 }
 
@@ -40,4 +42,17 @@
   height: 130px;
   position: relative;
   overflow: hidden;
+  
+}
+
+.Spinner{
+  font-size: 8px;
+}
+
+.Show {
+  display: block;
+}
+
+.Hide {
+  display: none;
 }

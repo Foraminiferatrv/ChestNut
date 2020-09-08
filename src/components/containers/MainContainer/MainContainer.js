@@ -77,8 +77,7 @@ const MainContainer = () => {
   const openCaseClickHandler = items => {
     setItems( { ...itemsState, currentItems: items } );
   }
-
-  console.log( lootBoxItemsWindowRouteState.loadingStatus );
+  
 
   return (
     <div className={ classes.MainContainer }>
